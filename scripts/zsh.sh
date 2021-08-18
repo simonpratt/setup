@@ -7,11 +7,11 @@ distro=`uname -s`
 homedir=~
 eval homedir=$homedir
 
-if [ "$distro" == "Darwin" ]; then
-    echo "Hopefully zsh is already installed..."
-elif [ "$distro" == "Linux" ]; then
-    apt install --yes zsh
-fi
+# if [ "$distro" == "Darwin" ]; then
+#     echo "Hopefully zsh is already installed..."
+# elif [ "$distro" == "Linux" ]; then
+#     apt install --yes zsh
+# fi
 
 ## setup zsh now ---
 zsh_custom=$homedir/.oh-my-zsh/custom;
