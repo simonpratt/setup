@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+  postgres:
+    container_name: postgres
+    image: mdillon/postgis:9.6
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+       - pgdata:/var/lib/postgresql/data
+    environment:
+      LC_ALL: C.UTF-8
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+
+  mongodb:
+    container_name: "mongodb"
+    image: mongo:4.2
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+        - 27017:27017
+    # command: mongod --smallfiles --logpath=/dev/null # --quiet
+volumes:
+  pgdata:
