@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/scripts/bin:$PATH
 
@@ -7,11 +14,12 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 #ZSH_THEME="dogenpunk"
 #ZSH_THEME="xxf"
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 #ZSH_THEME="edvardm"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 ## POWERLEVEL9K SETTINGS ##
 POWERLEVEL9K_STATUS_VERBOSE=false
@@ -85,7 +93,9 @@ source $ZSH/oh-my-zsh.sh
 # export AUTOSUGGESTION_HIGHLIGHT_CURSOR=0
 # complete entire suggestion with right arrow
 # export AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+
 export HIST_IGNORE_ALL_DUPS
 
 
@@ -196,3 +206,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . ~/.zsh.config
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -32,16 +32,16 @@ else
   (cd $zsh_custom/plugins/zsh-autosuggestions; git pull;)
 fi
 
-## ## copy themes over and clone
-# if [ -d $zsh_custom/themes/powerlevel9k ]; then
-#   echo '[ok] powerlevel9k exists'
-#   (cd $zsh_custom/themes/powerlevel9k; git pull;)
-# else
-#   mkdir -p $zsh_custom/themes/powerlevel9k;
-#   echo "[bad] creating folder!"
-#   git clone git@github.com:bhilburn/powerlevel9k.git "$zsh_custom/themes/powerlevel9k";
-#   (cd $zsh_custom/themes/powerlevel9k; git pull;)
-# fi
+# ## copy themes over and clone
+if [ -d $zsh_custom/themes/powerlevel10k ]; then
+  echo '[ok] powerlevel10k exists'
+  (cd $zsh_custom/themes/powerlevel10k; git pull;)
+else
+  mkdir -p $zsh_custom/themes/powerlevel10k;
+  echo "[bad] creating folder!"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $zsh_custom/themes/powerlevel10k
+  (cd $zsh_custom/themes/powerlevel10k; git pull;)
+fi
 
 # Sym link .zshrc
 if [ -L ~/.zshrc ]; then
@@ -55,6 +55,20 @@ elif [ -e ~/.zshrc ]; then
 else
   ln -s $workingDir/linked/.zshrc ~/.zshrc
   echo "[ok] Created ~/.zshrc sym link"
+fi
+
+# Sym link .p10k.zsh
+if [ -L ~/.p10k.zsh ]; then
+  echo "[ok] .p10k.zsh"
+elif [ -e ~/.p10k.zsh ]; then
+  mv ~/.p10k.zsh ~/.p10k.zsh.old
+  echo "[ok] Moved existing .p10k.zsh to .p10k.zsh.old"
+  
+  ln -s $workingDir/linked/.p10k.zsh ~/.p10k.zsh
+  echo "[ok] Created ~/.p10k.zsh sym link"
+else
+  ln -s $workingDir/linked/.p10k.zsh ~/.p10k.zsh
+  echo "[ok] Created ~/.p10k.zsh sym link"
 fi
 
 # Sym link custom zsh commands

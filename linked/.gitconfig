@@ -92,6 +92,7 @@
 
 [pull]
 	default = current
+	ff = only
 
 [help]
     autocorrect = 1
