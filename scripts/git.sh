@@ -8,10 +8,10 @@ elif [ -e ~/.gitconfig ]; then
   echo "[bad] .gitconfig exists!"
 
   rm ~/.gitconfig
-  ln -s $workingDir/__config__/.gitconfig ~/.gitconfig
+  ln -s $workingDir/linked/.gitconfig ~/.gitconfig
   echo "[ok] Created ~/.gitconfig sym link"
 else
-  ln -s $workingDir/__config__/.gitconfig ~/.gitconfig
+  ln -s $workingDir/linked/.gitconfig ~/.gitconfig
   echo "[ok] Created ~/.gitconfig sym link"
 fi
 
@@ -21,7 +21,7 @@ if [ -L ~/bin/diff-highlight ]; then
 elif [ -e ~/bin/diff-highlight ]; then
   echo "[bad] diff-highlight exists!"
 else
-  ln -s $workingDir/__config__/diff-highlight ~/bin/diff-highlight
+  ln -s $workingDir/linked/diff-highlight ~/bin/diff-highlight
   chmod +x ~/bin/diff-highlight
   echo "[ok] Created diff-highlight sym link"
 fi
