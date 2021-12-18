@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Running Setup"
 
 set -e
@@ -16,8 +18,9 @@ fi
 
 echo ""
 
-read -p "setup zsh? [y/n]: " setup_zsh
-read -p "setup git? [y/n]: " setup_git
+read -p "setup zsh? [y/n]: " setup_zsh;
+read -p "setup git? [y/n]: " setup_git;
+read -p "setup tmux? [y/n]: " setup_tmux;
 
 if [ "$setup_zsh" == "y" ]; then
     echo "installing up zsh"
@@ -27,4 +30,9 @@ fi
 if [ "$setup_git" == "y" ]; then
     echo "setting up git"
     bash ./scripts/git.sh
+fi
+
+if [ "$setup_tmux" == "y" ]; then
+    echo "setting up tmux"
+    bash ./scripts/tmux.sh
 fi
