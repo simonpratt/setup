@@ -163,6 +163,7 @@ export KUBECONFIG=~/.kube/config:~/.kube/bigbird-cluster
 alias ku="kubectl"
 alias kup="kubectl get pods -o wide"
 alias kua="kubectl get all --all-namespaces"
+source <(kubectl completion zsh)
 
 ##python stuff
 #alias python='python3'
