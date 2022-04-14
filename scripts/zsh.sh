@@ -28,7 +28,7 @@ if [ -d $zsh_custom/plugins/zsh-autosuggestions ]; then
 else
   mkdir -p $zsh_custom/plugins/zsh-autosuggestions;
   echo "[bad] creating folder!"
-  git clone git://github.com/zsh-users/zsh-autosuggestions "$zsh_custom/plugins/zsh-autosuggestions";
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_custom/plugins/zsh-autosuggestions";
   (cd $zsh_custom/plugins/zsh-autosuggestions; git pull;)
 fi
 
