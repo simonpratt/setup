@@ -21,6 +21,7 @@ echo ""
 read -p "setup zsh? [y/n]: " setup_zsh;
 read -p "setup git? [y/n]: " setup_git;
 read -p "setup tmux? [y/n]: " setup_tmux;
+read -p "setup kitty? [y/n]: " setup_kitty;
 
 if [ "$setup_zsh" == "y" ]; then
     echo "installing up zsh"
@@ -35,4 +36,9 @@ fi
 if [ "$setup_tmux" == "y" ]; then
     echo "setting up tmux"
     bash ./scripts/tmux.sh
+fi
+
+if [ "$setup_kitty" == "y" ]; then
+    echo "setting up kitty"
+    bash ./scripts/kitty.sh
 fi
