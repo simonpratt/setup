@@ -7,11 +7,13 @@ distro=`uname -s`
 homedir=~
 eval homedir=$homedir
 
-# if [ "$distro" == "Darwin" ]; then
-#     echo "Hopefully zsh is already installed..."
-# elif [ "$distro" == "Linux" ]; then
-#     apt install --yes zsh
-# fi
+## Check that zsh is installed
+if command -v zsh >/dev/null 2>&1; then
+    echo '[ok] zsh is installed'
+else
+    echo "[bad] zsh is not installed"
+    exit 1
+fi
 
 ## setup zsh now ---
 zsh_custom=$homedir/.oh-my-zsh/custom;
@@ -19,7 +21,9 @@ zsh_custom=$homedir/.oh-my-zsh/custom;
 if [ -d "$homedir/.oh-my-zsh" ]; then
     echo '[ok] .oh-my-zsh'
 else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    echo '[bad] oh-my-zsh is not installed. See https://ohmyz.sh/#install'
+    exit 1
+    # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 if [ -d $zsh_custom/plugins/zsh-autosuggestions ]; then
