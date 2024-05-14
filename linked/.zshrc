@@ -171,13 +171,6 @@ if command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
 fi
 
-# kubes stuff
-export KUBECONFIG=~/.kube/config
-alias ku="kubectl"
-alias kup="kubectl get pods -o wide"
-alias kua="kubectl get all --all-namespaces"
-source <(kubectl completion zsh)
-
 ##python stuff
 #alias python='python3'
 alias py='python3'
