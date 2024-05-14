@@ -82,7 +82,12 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(postgres git colored-man-pages compleat history zsh-autosuggestions kubectl)
+plugins=(postgres git colored-man-pages compleat history zsh-autosuggestions)
+
+# Check if kubectl is installed
+if command -v kubectl &> /dev/null; then
+    plugins+=(kubectl)
+fi
 
 # Old plugins
 # kubernetes
@@ -157,9 +162,17 @@ export JVM_ARGS="-Xms512m -Xmx512m"
 export HEAP="-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m"
 
 
+# kubes stuff
+if command -v kubectl &> /dev/null; then
+    export KUBECONFIG=~/.kube/config
+    alias ku="kubectl"
+    alias kup="kubectl get pods -o wide"
+    alias kua="kubectl get all --all-namespaces"
+    source <(kubectl completion zsh)
+fi
 
 # kubes stuff
-export KUBECONFIG=~/.kube/config:~/.kube/bigbird-cluster
+export KUBECONFIG=~/.kube/config
 alias ku="kubectl"
 alias kup="kubectl get pods -o wide"
 alias kua="kubectl get all --all-namespaces"
