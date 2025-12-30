@@ -66,7 +66,12 @@ After implementing some tests we **need to verify them**
 ## If You Get Stuck
 
 When something isn't working as expected:
-- DO NOT go around in circles guessing
-- First, consider what logging we can add to the test case to get more information
-- Second, consider adding extra temporary API calls to verify the state of the application
-- Second, consider what logging we can add to the application code to get more information. You will need to prompt the user to run the test manually and report back
+- DO NOT go around in circles guessing. Max of 3 iterations before pausing and asking for help
+- First, consider what logging we can add to get more information
+- Second, report back to the user for help
+
+Some ideas for debugging
+- Add logs to the client code and see them in playwright via `page.on('console', (msg) => console.log('Browser:', msg.text()));`
+- Add logs to the playwright code
+- Search the dom for all `data-testid`'s to see what is available and/or to see if what we're looking for is there or not
+- Add some temporary API calls to verify the state of the data
